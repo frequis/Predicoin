@@ -1,0 +1,13 @@
+services:
+  training:
+    build: ./training
+    volumes:
+      - ./data:/app/data:ro
+      - ./models:/app/models
+
+  inference:
+    build: ./inference
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models:ro
